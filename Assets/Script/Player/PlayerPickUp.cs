@@ -8,7 +8,8 @@ public class PlayerPickup : MonoBehaviour
     public Transform holdPoint;
     public Collider playerCollider;
 
-    private GameObject heldObject;
+    public GameObject heldObject;
+    //임시로 빠따를 하나 만들 건데 옵젝 들고있는 와중에 때릴 수는 없으니 임시로 보호를 변경할게요
 
 
     void Update()
