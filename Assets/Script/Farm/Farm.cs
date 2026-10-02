@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Farm : MonoBehaviour
 {
+    //이코드는제정신이아니다완전히다르게바꿔야해
     public int currentLevel = 1;
     public GameObject mushroomPrefab;
 
@@ -27,11 +28,23 @@ public class Farm : MonoBehaviour
     {
         if (mushroomPrefab == null || !poza.CompareTag("Poza"))
             return;
+        if (IsMushroomOverlapping(poza))
+            return;
         // 트리거는 접촉점을 안 주니까 포자 콜라이더에서 밭에 가장 가까운 지점을 쓴다
         Vector3 contactPoint = poza.ClosestPoint(transform.position);
         Instantiate(mushroomPrefab, contactPoint, Quaternion.identity);
     }
-
+    bool IsMushroomOverlapping(Collider poza)
+    {
+        Bounds bounds = poza.bounds;
+        Collider[] hits = Physics.OverlapBox(bounds.center, bounds.extents, Quaternion.identity);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].CompareTag("Mushroom"))
+                return true;
+        }
+        return false;
+    }
     void ApplyFarmScale()
     {
         if (currentLevel > 4)

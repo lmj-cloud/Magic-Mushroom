@@ -3,7 +3,6 @@ using UnityEngine;
 public class GromeStatus : MonoBehaviour
 {
     public int Hp = 30;
-    [SerializeField] private Renderer cachedRenderer;
 
     public void TakeDamage(int attackDamage)
     {

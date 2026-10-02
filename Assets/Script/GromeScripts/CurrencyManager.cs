@@ -8,7 +8,7 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI MoneyText;
     [SerializeField] private int mushroomValue = 100;
 
-    private int money;
+    public int money;
 
     void Start()
     {
