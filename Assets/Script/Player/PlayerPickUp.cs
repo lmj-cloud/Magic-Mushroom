@@ -5,9 +5,10 @@ public class PlayerPickup : MonoBehaviour
 {
     public float interactDistance = 3f;
     public float interactRadius = 0.5f;
+    public float throwPower = 10f;
     public Transform holdPoint;
     public Collider playerCollider;
-
+    public Transform playerCamera;
     private GameObject heldObject;
 
 
@@ -47,6 +48,13 @@ public class PlayerPickup : MonoBehaviour
 
                 Rigidbody rb = heldObject.GetComponent<Rigidbody>();
                 Collider objectCollider = heldObject.GetComponent<Collider>();
+
+                PickupItem item = heldObject.GetComponent<PickupItem>();
+
+                if (item != null)
+                {
+                    item.SetPlayerPickup(this);
+                }
 
                 if (objectCollider != null)
                 {
@@ -89,11 +97,41 @@ public class PlayerPickup : MonoBehaviour
 
     void UseLeftClick()
     {
-        Debug.Log("들고 있는 물건 던지거나 사용");
+        PickupItem item = heldObject.GetComponent<PickupItem>();
+
+        if (item != null)
+        {
+            item.UseLeftClick();
+        }
     }
 
     void UseRightClick()
     {
-        Debug.Log("들고 있는 물건 던지거나 사용");
+        PickupItem item = heldObject.GetComponent<PickupItem>();
+
+        if (item != null)
+        {
+            item.UseRightClick();
+        }
+    }
+
+    public void Throw()
+    {
+        if (heldObject == null)
+            return;
+
+        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+        Collider objectCollider = heldObject.GetComponent<Collider>();
+
+        heldObject.transform.SetParent(null);
+
+        Physics.IgnoreCollision(playerCollider, objectCollider, false);
+
+        rb.useGravity = true;
+        rb.isKinematic = false;
+
+        rb.AddForce(playerCamera.forward * throwPower, ForceMode.Impulse);
+
+        heldObject = null;
     }
 }
