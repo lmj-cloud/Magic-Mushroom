@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemy.CompareTag("Grome"))
             {
-                enemy.GetComponent<GromeStatus>().TakeDamage(attackDamage);
+                enemy.GetComponentInChildren<GromeStatus>().TakeDamage(attackDamage);
                 Debug.Log("적이 맞았다!!!!!! 아프다");
             }
         }

@@ -20,7 +20,7 @@ public class Noum : MonoBehaviour
     static readonly float[] fleeAngles = { 0f, 30f, -30f, 60f, -60f, 90f, -90f, 120f, -120f };
 
     NavMeshAgent agent;
-    Transform held;
+    public Transform held;
     Transform player;
     NavMeshPath path;
     float repathTimer;
