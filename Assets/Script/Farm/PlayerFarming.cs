@@ -1,22 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
+// 포자는 필드 아이템이 됐다. 줍고 던지고 뿌리는 건 Poza가 처리한다.
 public class PlayerFarming : MonoBehaviour
 {
-    public GameObject poza;
-    [SerializeField] private Transform pozalocate;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            Instantiate(poza, pozalocate.position, Quaternion.identity);
-        }
-    }
 }

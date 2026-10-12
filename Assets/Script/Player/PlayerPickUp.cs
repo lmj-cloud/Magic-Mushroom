@@ -9,7 +9,7 @@ public class PlayerPickup : MonoBehaviour
     public Transform holdPoint;
     public Collider playerCollider;
     public Transform playerCamera;
-    private GameObject heldObject;
+    public GameObject heldObject;
 
 
     void Update()
@@ -42,7 +42,7 @@ public class PlayerPickup : MonoBehaviour
 
         if (Physics.SphereCast(ray, interactRadius, out RaycastHit hit, interactDistance))
         {
-            if (hit.collider.CompareTag("Pickup"))
+            if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Weapon"))
             {
                 heldObject = hit.collider.gameObject;
 

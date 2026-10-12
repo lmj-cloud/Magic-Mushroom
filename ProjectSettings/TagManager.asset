@@ -10,11 +10,12 @@ TagManager:
   - Poza
   - Farm
   - Grome
+  - Weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gnome
   - Water
   - UI
   - 

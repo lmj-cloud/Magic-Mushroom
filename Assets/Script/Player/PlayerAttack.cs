@@ -28,8 +28,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 return;
             }
-            else
-            {
+            else{
                 Attack();
                 AttackDelay();
                 attacked = true;
